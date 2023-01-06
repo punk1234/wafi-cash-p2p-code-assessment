@@ -49,14 +49,13 @@ class UserService:
         pass
 
     def create_user(self, username: str) -> User:
-        """
-            Creates a new User
+        """ Creates a new User
 
-            Args:
-                username: str, username of the new user
+        Args:
+          username: str, username of the new user
 
-            Returns:
-                The newly created User
+        Returns:
+          The newly created User
         """
         
         self.__check_that_username_is_valid(username)
@@ -68,16 +67,16 @@ class UserService:
         print(f"User {new_user.username} is added to the app")
         return new_user
 
+
     def credit_account(self, username: str, amount: float) -> User:
-        """
-            Credits account of user with username
+        """ Credits account of user with username
 
-            Args:
-                username: str, username of the user to credit
-                amount: float, amount or value to credit the user
+        Args:
+          username: str, username of the user to credit
+          amount: float, amount or value to credit the user
 
-            Returns:
-                The User object that was credited
+        Returns:
+          The User object that was credited
         """
 
         self.__check_that_username_is_valid(username)
@@ -91,17 +90,17 @@ class UserService:
         print(f"User {user.username} deposits {amount} dollars")
         return user
 
+
     def send(self, sender_username: str, recipient_username: str, amount: float) -> list:
-        """
-            Sends money a user-account to another user-account
+        """ Sends money from a user-account to another user-account
 
-            Args:
-                sender_username: str, username of the sender
-                recipient_username: str, username of the recipient
-                amount: float, amount or value to send
+        Args:
+          sender_username: str, username of the sender
+          recipient_username: str, username of the recipient
+          amount: float, amount or value to send
 
-            Returns:
-                A list containing both the sender & recipient user objects
+        Returns:
+          A list containing both the sender & recipient user objects
         """
 
         self.__check_that_username_is_valid(sender_username)
@@ -124,16 +123,16 @@ class UserService:
         print(f"User {sender.username} sends {amount} dollars to User {recipient.username}")
         return [sender, recipient]
 
+
     def transfer(self, username: str, amount: float) -> None:
-        """
-            Transfers money out of a user's account
+        """ Transfers money out of a user's account
 
-            Args:
-                username: str, username of user to debit for transfer
-                amount: float, amount or value to debit the user
+        Args:
+          username: str, username of user to debit for transfer
+          amount: float, amount or value to debit the user
 
-            Returns:
-                The User object that was debited
+        Returns:
+          The User object that was debited
         """
 
         self.__check_that_username_is_valid(username)
@@ -149,15 +148,15 @@ class UserService:
         print(f"User {user.username} transfers {amount} dollars from their account")
         return user
         
+
     def check_account_balance(self, username: str) -> float:
-        """
-            Checks user's account balance
+        """ Checks user's account balance
 
-            Args:
-                username: str, username of user to get account-balance
+        Args:
+          username: str, username of user to get account-balance
 
-            Returns:
-                The account-balance of specified user with username
+        Returns:
+          The account-balance of specified user with username
         """
 
         self.__check_that_username_is_valid(username)
@@ -166,15 +165,18 @@ class UserService:
         print(f"User {user.username} checks their balance and has {user.account_balance} dollars")
         return user.account_balance
         
+
     def __check_that_username_is_valid(self, username: str) -> None:
         username = username.strip()
 
         if len(username) == 0:
             raise Exception("Invalid user!")
 
+
     def __check_that_username_does_not_exist(self, username: str) -> None:
         if DataStore.exist(username):
             raise Exception("User already exist!")
+
 
     def __check_that_username_exist(self, username: str) -> User:
         found_user = DataStore.get_record(username)
@@ -183,6 +185,7 @@ class UserService:
             return found_user
 
         raise Exception("User not found!")
+
 
     def __check_that_user_has_sufficient_funds(self, sender: User, amount_to_deduct: float) -> None:
         if sender.account_balance < amount_to_deduct:
