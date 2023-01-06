@@ -1,6 +1,6 @@
 import unittest
 
-from single_app import UserService
+from wafi_cash_p2p_app import UserService
 
 class Test_CreateUser(unittest.TestCase):
 
