@@ -34,3 +34,7 @@ functionality as described above are working properly.
     ```
     python -m unittest -v test_wafi_cash_p2p_app.py
     ```
+
+## IMPROVEMENTS
+- Add test-coverage
+- Manage transactions
