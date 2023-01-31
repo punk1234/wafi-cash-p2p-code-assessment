@@ -1,0 +1,5 @@
+NOTES
+
+- Market rates = { "USD": 1, "NGN" : 415, GBP:0.86, "YUAN" : 6.89}
+
+- {"USD":"2", "NGN":400, "GBP" : 1}
